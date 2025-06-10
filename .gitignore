@@ -1,4 +1,4 @@
 odoo-db-data/
 odoo-web-data/
 .DS_Store
-custom_addons/.DS_Store
+*/.DS_Store
