@@ -1,0 +1,22 @@
+services:
+  odoo:
+    image: odoo:18.0
+    depends_on:
+      - db
+    ports:
+      - "10069:8069"
+      - "10070:8070"
+      - "10071:8071"
+    volumes:
+      - /Users/engo/Documents/engo/my-odoo-project/odoo-web-data:/var/lib/odoo
+      - /Users/engo/Documents/engo/my-odoo-project/config:/etc/odoo
+      - /Users/engo/Documents/engo/my-odoo-project/custom_addons:/mnt/extra-addons
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - /Users/engo/Documents/engo/my-odoo-project/odoo-db-data:/var/lib/postgresql/data/pgdata

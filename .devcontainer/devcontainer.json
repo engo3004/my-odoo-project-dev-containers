@@ -1,0 +1,45 @@
+{
+    "name": "Odoo 18 Development Environment",
+    "dockerComposeFile": ["../docker-compose.yml"],
+    "service": "odoo",
+    "workspaceFolder": "/mnt/extra-addons",
+    "shutdownAction": "stopCompose",    
+    "postCreateCommand": "pip install -r /opt/odoo/requirements.txt",
+    "remoteUser": "odoo",
+    "features": {
+        "ghcr.io/devcontainers/features/git:latest": {},
+        "ghcr.io/devcontainers/features/sshd:latest": {},
+        "ghcr.io/devcontainers/features/common-utils:latest": {}
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.pythonPath": "/usr/bin/python3",
+                "python.formatting.provider": "black",
+                "editor.formatOnSave": true,
+                "terminal.integrated.defaultProfile.linux": "bash",
+                // Ensure Python path is correctly set for linters/formatters
+                "python.linting.pylintEnabled": true,
+                "python.linting.enabled": true,
+                "python.formatting.blackArgs": [
+                    "--line-length",
+                    "120"
+                ],
+                "editor.tabSize": 4,
+                "files.associations": {
+                    "*.xml": "xml" // Ensure XML files are recognized
+                }
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-azuretools.vscode-docker",
+                "odoo-ide.odoo-snippets",
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "formulahendry.auto-rename-tag",
+                "redhat.vscode-yaml",
+                "streetsidesoftware.code-spell-checker"
+            ]
+        }
+    }
+}
